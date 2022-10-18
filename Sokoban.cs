@@ -188,7 +188,9 @@ public class Sokoban : MonoBehaviour
     // ゲーム開始時に呼び出される
     private void Start()
     {
-         float RandamNo = Mathf.Floor(Random.Range(1f, 5f));
+        panel.enabled = false;
+        panel2.enabled = false;
+        float RandamNo = Mathf.Floor(Random.Range(1f, 5f));
         if (RandamNo == 1)
         {
             stageFile = stageFile;
@@ -271,6 +273,11 @@ public class Sokoban : MonoBehaviour
         {
             // プレイヤーが左に移動できるか検証
             TryMovePlayer(DirectionType.LEFT);
+        }
+         if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            panel2.enabled = true;
+          
         }
     }
     // 方向の種類
@@ -446,6 +453,7 @@ public class Sokoban : MonoBehaviour
         {
             // ゲームクリア
             isClear = true;
+            panel.enabled = true;
         }
     }
 }
